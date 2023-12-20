@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
     const file = req.files.image;
     const fileBase64 = fs.readFileSync(file.path, { encoding: 'base64' });
    const {fullTextAnnotation: {text: googleOcrTextRes}} = (await googleOcr(fileBase64)).responses[0];
+   console.log("🚀 ~ file: googleOcr.js:13 ~ module.exports= ~ googleOcrTextRes:", googleOcrTextRes)
    
     if(!googleOcrTextRes){
       res.status(422).json({
